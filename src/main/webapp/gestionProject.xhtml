@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+    	<link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'/>
+    </head>
+    <body>
+        <h1>Gestion Project</h1>
+        	
+        <h:form>
+			<h:commandButton value="Ajouter un projet" class="btn btn-success" action="addProject.xhtml"></h:commandButton>
+			<h:commandButton value="Rechercher un projet" class="btn btn-primary" action="findProject.xhtml"></h:commandButton>
+<!-- 			<h:commandLink class="btn btn-warning" action="updateUser.xhtml"> -->
+<!--        			<span class="glyphicon glyphicon-cog"></span> -->
+<!--        		</h:commandLink> -->
+			<h:commandButton value="Retour Menu gestion" class="btn btn-default" action="gestion.xhtml?faces-redirect=true"></h:commandButton>
+		</h:form>
+        	
+		<h:form>
+			<div class="container">
+				<h:dataTable var="project" value="#{controller.doProjectSelectAll()}" class="table table-striped">
+					<h:column>
+						<f:facet name="header" >ID</f:facet>
+			        		#{project.id_project}
+			        </h:column>
+					<h:column>
+						<f:facet name="header">Nom</f:facet>
+			        		#{project.name_project}
+			        </h:column>
+					<h:column>
+						<f:facet name="header">Catégorie</f:facet>
+			        		#{project.category_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Montant souhaité</f:facet>
+			        		#{project.expectedPrice_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Durée</f:facet>
+			        		#{project.duration_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Montant Récolté</f:facet>
+			        		#{project.currentAmount_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Date de début</f:facet>
+			        		#{project.startDate_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Delete</f:facet>
+			        		<h:commandLink class="btn btn-danger" action="#{controller.doProjectDelete(project)}">
+			        			<span class="glyphicon glyphicon-remove-sign"></span>
+			        		</h:commandLink>
+			        </h:column>
+				</h:dataTable>
+			</div>
+		</h:form>
+				
+		<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+    </body>
+</html>

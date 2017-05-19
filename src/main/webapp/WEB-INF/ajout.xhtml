@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<head>
+<title>Page Ajout</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Ajouter une personne</h1>
+
+	<f:view>
+		<h:form>
+			<h:panelGrid border="0" columns="3" cellpadding="5">
+				<h:outputText value="Prénom :" />
+				<h:inputText id="nom" value="#{personneControl.newpersonne.nom}"
+					required="true" requiredMessage="Prénom obligatoire" />
+				<h:message for="nom" />
+
+				<h:outputText value="Email :" />
+				<h:inputText id="email" value="#{personneControl.newpersonne.email}"
+					required="true" requiredMessage="email obligatoire" />
+				<h:message for="nom" />
+
+				<h:outputText value="Mot de passe :" />
+				<h:inputText id="mdp" value="#{personneControl.newpersonne.mdp}"
+					required="true" requiredMessage="Mot de passe obligatoire" />
+				<h:message for="nom" />
+				<h:outputText />
+				<h:commandButton value="Ajouter" action="#{personneControl.doAdd}" />
+			</h:panelGrid>
+		</h:form>
+	</f:view>
+</body>
+</html>

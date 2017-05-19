@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:jsf="http://xmlns.jcp.org/jsf"
+	  xmlns:h="http://xmlns.jcp.org/jsf/html"
+	  xmlns:f="http://xmlns.jcp.org/jsf/core"> 
+
+    <head>
+        <title>Page de modification</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1"/>
+    	<link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'/>
+    </head>
+	<body>
+		<h1>Modification d'un utilisateur</h1>
+				
+		<div class="row">
+			<div class="col-xs-1"></div>
+			<div class="col-xs-10">
+				<h:form styleClass="form-horizontal">
+					<div class="form-group">
+						<h:outputLabel value="Entrée l'adresse email : " styleClass="control-label col-sm-4"/>
+						<div class="col-sm-4">
+							<h:selectOneMenu class="form-control" value="#{controller.category_project}">
+								<f:selectItem itemValue="AfficherTout" itemLabel="AfficherTout"/>
+								<f:selectItem itemValue="Magie Noir" itemLabel="Magie Noir"/>
+								<f:selectItem itemValue="Potion" itemLabel="Potion"/>
+								<f:selectItem itemValue="Livre" itemLabel="Livre"/>
+								<f:selectItem itemValue="Créature" itemLabel="Créature"/>
+								<f:selectItem itemValue="Sortilège" itemLabel="Sortilège"/>
+								<f:selectItem itemValue="Metamorphose" itemLabel="Metamorphose"/>
+							</h:selectOneMenu>
+						</div>
+						<div class ="col-sm-2">
+							<h:commandButton value="Afficher Catégorie" class="btn btn-success text-right" action="#{controller.doProjectSelectByCategory}" />
+						</div>
+						<div class ="col-sm-2">
+							<h:commandButton value="Retour projet" class="btn btn-default text-right" action="project.xhtml" />
+						</div>
+					</div>
+				</h:form>
+			</div>
+			<div class="col-xs-1"></div>
+		</div>
+		
+		<h:form>
+			<div class="container">
+				<h:dataTable var="project" value="#{controller.doProjectSelectByCategory()}" class="table table-striped">
+					<h:column>
+						<f:facet name="header" >ID</f:facet>
+			        		#{project.id_project}
+			        </h:column>
+					<h:column>
+						<f:facet name="header">Nom</f:facet>
+			        		#{project.name_project}
+			        </h:column>
+					<h:column>
+						<f:facet name="header">Catégorie</f:facet>
+			        		#{project.category_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Montant souhaité</f:facet>
+			        		#{project.expectedPrice_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Durée</f:facet>
+			        		#{project.duration_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Montant Récolté</f:facet>
+			        		#{project.currentAmount_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Date de début</f:facet>
+			        		#{project.startDate_project}
+			        </h:column>
+			        <h:column>
+						<f:facet name="header">Donnation</f:facet>
+			        		#{project.contributors_projects}
+			        </h:column>
+			        
+				</h:dataTable>
+			</div>
+		</h:form>
+		
+		<script type="text/javascript" src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="webjars/jquery/2.1.1/jquery.min.js"></script>
+	</body>
+</html>
